@@ -26,6 +26,8 @@ export async function getStaticPaths() {
 
 const { niche } = Astro.props as { niche: WodahNiche };
 
+export const prerender = true;
+
 const handleCtaClick = () => {
   // Handle CTA click, perhaps scroll to conversion section
   console.log('CTA clicked for', niche.id);

@@ -2,8 +2,10 @@ import { createClient } from '@supabase/supabase-js';
 import { wodahConfig } from '../../../wodah.config';
 
 export async function POST({ request }: { request: Request }) {
+  console.log('API called with:', { url: wodahConfig.supabase.url, key: wodahConfig.supabase.anonKey ? 'set' : 'not set' });
   try {
     if (!wodahConfig.supabase.url || !wodahConfig.supabase.anonKey) {
+      console.error('Supabase not configured');
       return new Response(JSON.stringify({ error: 'Supabase not configured' }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
