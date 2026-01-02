@@ -19,32 +19,20 @@ const Hero: React.FC<HeroProps> = ({
 }) => {
   return (
     <section
-      className="hero"
+      className="relative bg-cover bg-center min-h-[80vh] flex items-center justify-center text-white text-center"
       style={{
         backgroundImage: `url(${heroImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        minHeight: '80vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'white',
-        textAlign: 'center',
       }}
     >
-      <div className="hero-content" style={{ maxWidth: '600px', padding: '20px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>{headline}</h1>
-        <p style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>{subheadline}</p>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="relative max-w-2xl p-5">
+        <h1 className="text-5xl font-bold mb-4">{headline}</h1>
+        <p className="text-2xl mb-8">{subheadline}</p>
         <button
           onClick={onCtaClick}
+          className="text-white border-none py-4 px-8 text-xl rounded-md cursor-pointer"
           style={{
             backgroundColor: primaryColor,
-            color: 'white',
-            border: 'none',
-            padding: '15px 30px',
-            fontSize: '1.2rem',
-            borderRadius: '5px',
-            cursor: 'pointer',
           }}
         >
           {buttonText}

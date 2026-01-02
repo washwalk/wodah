@@ -7,28 +7,19 @@ interface BenefitGridProps {
 
 const BenefitGrid: React.FC<BenefitGridProps> = ({ benefits, primaryColor }) => {
   return (
-    <section className="benefits" style={{ padding: '40px 20px', backgroundColor: '#f9f9f9' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>Why Choose Us?</h2>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '20px',
-          }}
-        >
+    <section className="bg-gray-100 py-10 px-5">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-center text-3xl font-bold mb-8">Why Choose Us?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {benefits.map((benefit, index) => (
             <div
               key={index}
+              className="bg-white p-5 rounded-lg shadow-md"
               style={{
-                backgroundColor: 'white',
-                padding: '20px',
-                borderRadius: '8px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                 borderLeft: `5px solid ${primaryColor}`,
               }}
             >
-              <p style={{ fontSize: '1.1rem', margin: 0 }}>{benefit}</p>
+              <p className="text-lg">{benefit}</p>
             </div>
           ))}
         </div>

@@ -5,7 +5,7 @@ interface ConversionSectionProps {
   buttonText: string;
   primaryColor: string;
   nicheId: string;
-  onSubmit: (email: string, nicheId: string) => void;
+  onSubmit: (email: string, nicheId:string) => void;
 }
 
 const ConversionSection: React.FC<ConversionSectionProps> = ({
@@ -24,42 +24,27 @@ const ConversionSection: React.FC<ConversionSectionProps> = ({
 
   return (
     <section
-      className="conversion"
+      className="py-10 px-5 text-white text-center"
       style={{
-        padding: '40px 20px',
         backgroundColor: primaryColor,
-        color: 'white',
-        textAlign: 'center',
       }}
     >
-      <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <h2>Ready to Get Started?</h2>
-        <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+      <div className="max-w-xl mx-auto">
+        <h2 className="text-3xl font-bold">Ready to Get Started?</h2>
+        <form onSubmit={handleSubmit} className="mt-5">
           <input
             type="email"
             placeholder={emailPlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            style={{
-              padding: '10px',
-              fontSize: '1rem',
-              border: 'none',
-              borderRadius: '5px',
-              width: '70%',
-              marginRight: '10px',
-            }}
+            className="p-3 text-lg rounded-md w-full md:w-auto md:min-w-[300px] mr-0 md:mr-2 mb-2 md:mb-0 text-black"
           />
           <button
             type="submit"
+            className="bg-white border-none p-3 text-lg rounded-md cursor-pointer"
             style={{
-              backgroundColor: 'white',
               color: primaryColor,
-              border: 'none',
-              padding: '10px 20px',
-              fontSize: '1rem',
-              borderRadius: '5px',
-              cursor: 'pointer',
             }}
           >
             {buttonText}
