@@ -1,5 +1,9 @@
 ---
+import Hero from '../components/Hero.tsx';
+import BenefitGrid from '../components/BenefitGrid.tsx';
+import ConversionSection from '../components/ConversionSection.tsx';
 
+const content = await import('../../content/solar-roi-calculator.json');
 ---
 
 <html lang="en">
@@ -8,9 +12,22 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{content.name}</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<Hero
+			headline={content.headline}
+			subheadline={content.subheadline}
+			buttonText={content.buttonText}
+			primaryColor={content.primaryColor}
+			heroImage={content.heroImage}
+			onCtaClick={() => console.log('CTA clicked')}
+		/>
+		<BenefitGrid benefits={content.benefits} />
+		<ConversionSection
+			emailPlaceholder={content.emailPlaceholder}
+			buttonText={content.buttonText}
+			pricingTiers={content.pricingTiers}
+		/>
 	</body>
 </html>
