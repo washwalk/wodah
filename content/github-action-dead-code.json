@@ -1,0 +1,28 @@
+{
+  "id": "github-action-dead-code",
+  "name": "GitHub Action: Dead Code Eliminator",
+  "logo": "/logos/github-action.png",
+  "primaryColor": "#F59E0B",
+  "headline": "Automatically Remove Dead Code from Your Repositories",
+  "subheadline": "Keep your codebase clean with our AI-powered dead code detection and removal",
+  "heroImage": "/images/github-action-hero.jpg",
+  "emailPlaceholder": "Enter your email to try the action",
+  "buttonText": "Install Action",
+  "benefits": [
+    "Automatic dead code detection",
+    "Zero configuration setup",
+    "Supports multiple languages"
+  ],
+  "pricingTiers": [
+    {
+      "name": "Free Tier",
+      "price": "$0",
+      "features": ["100 PRs/month", "Basic support", "Community forum"]
+    },
+    {
+      "name": "Pro",
+      "price": "$29/month",
+      "features": ["Unlimited PRs", "Priority support", "Custom rules"]
+    }
+  ]
+}

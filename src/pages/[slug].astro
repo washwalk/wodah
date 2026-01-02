@@ -1,0 +1,71 @@
+---
+import { readFileSync } from 'fs';
+import { join } from 'path';
+import Hero from '../components/Hero.tsx';
+import BenefitGrid from '../components/BenefitGrid.tsx';
+import ConversionSection from '../components/ConversionSection.tsx';
+import AnalyticsTracker from '../components/AnalyticsTracker.tsx';
+import type { WodahNiche } from '../types.ts';
+
+export async function getStaticPaths() {
+  const contentDir = join(process.cwd(), 'content');
+  const files = await import('fs').then(fs => fs.readdirSync(contentDir).filter(f => f.endsWith('.json')));
+  
+  return files.map(file => {
+    const slug = file.replace('.json', '');
+    const data = JSON.parse(readFileSync(join(contentDir, file), 'utf8'));
+    return {
+      params: { slug },
+      props: { niche: data as WodahNiche },
+    };
+  });
+}
+
+const { niche } = Astro.props as { niche: WodahNiche };
+
+const handleCtaClick = () => {
+  // Handle CTA click, perhaps scroll to conversion section
+  console.log('CTA clicked for', niche.id);
+};
+
+const handleFormSubmit = async (email: string, nicheId: string) => {
+  // Submit to API
+  console.log('Submitting', email, nicheId);
+  // Call the API route
+  await fetch('/api/validate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, nicheId }),
+  });
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{niche.name}</title>
+  </head>
+  <body>
+    <AnalyticsTracker nicheId={niche.id} client:load />
+    <Hero
+      headline={niche.headline}
+      subheadline={niche.subheadline}
+      buttonText={niche.buttonText}
+      primaryColor={niche.primaryColor}
+      heroImage={niche.heroImage}
+      onCtaClick={handleCtaClick}
+      client:load
+    />
+    <BenefitGrid benefits={niche.benefits} primaryColor={niche.primaryColor} client:load />
+    <ConversionSection
+      emailPlaceholder={niche.emailPlaceholder}
+      buttonText={niche.buttonText}
+      primaryColor={niche.primaryColor}
+      nicheId={niche.id}
+      onSubmit={handleFormSubmit}
+      client:load
+    />
+  </body>
+</html>

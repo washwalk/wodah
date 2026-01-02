@@ -1,0 +1,28 @@
+{
+  "id": "ai-missed-call-barbers",
+  "name": "AI Missed Call Responder for Barbers",
+  "logo": "/logos/barber-ai.png",
+  "primaryColor": "#8B5CF6",
+  "headline": "Never Miss a Client Again",
+  "subheadline": "AI-powered text responses to missed calls for barber shops",
+  "heroImage": "/images/barber-ai-hero.jpg",
+  "emailPlaceholder": "Enter your shop email to get started",
+  "buttonText": "Start Free Trial",
+  "benefits": [
+    "Instant client responses",
+    "Appointment booking via text",
+    "Customizable messages"
+  ],
+  "pricingTiers": [
+    {
+      "name": "Free Trial",
+      "price": "$0",
+      "features": ["7-day trial", "Basic responses", "Email support"]
+    },
+    {
+      "name": "Professional",
+      "price": "$19/month",
+      "features": ["Unlimited responses", "Advanced AI", "Priority support"]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "website-audit-dentists",
+  "name": "Custom Website Audit for Local Dentists",
+  "logo": "/logos/dentist-audit.png",
+  "primaryColor": "#10B981",
+  "headline": "Get More Patients with a Better Dental Website",
+  "subheadline": "Free personalized audit to optimize your dental practice's online presence",
+  "heroImage": "/images/dentist-website-hero.jpg",
+  "emailPlaceholder": "Enter your clinic's email for the audit",
+  "buttonText": "Claim Free Audit",
+  "benefits": [
+    "SEO optimization recommendations",
+    "Patient conversion improvements",
+    "Mobile responsiveness check"
+  ],
+  "pricingTiers": [
+    {
+      "name": "Free Audit",
+      "price": "$0",
+      "features": ["Site analysis", "Actionable report", "Email support"]
+    },
+    {
+      "name": "Premium Implementation",
+      "price": "$299",
+      "features": ["Full site optimization", "Ongoing monitoring", "Priority support"]
+    }
+  ]
+}

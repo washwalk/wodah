@@ -1,0 +1,28 @@
+{
+  "id": "solar-roi-calculator",
+  "name": "Solar ROI Calculator",
+  "logo": "/logos/solar-calculator.png",
+  "primaryColor": "#EF4444",
+  "headline": "Calculate Your Solar Panel Return on Investment",
+  "subheadline": "See how much you can save with solar energy in your location",
+  "heroImage": "/images/solar-calculator-hero.jpg",
+  "emailPlaceholder": "Enter your zip code for personalized results",
+  "buttonText": "Calculate Savings",
+  "benefits": [
+    "Accurate ROI projections",
+    "Local incentives included",
+    "Compare multiple systems"
+  ],
+  "pricingTiers": [
+    {
+      "name": "Free Calculator",
+      "price": "$0",
+      "features": ["Basic calculation", "Local incentives", "PDF report"]
+    },
+    {
+      "name": "Premium Consultation",
+      "price": "$99",
+      "features": ["Detailed analysis", "Installer recommendations", "1-on-1 consultation"]
+    }
+  ]
+}

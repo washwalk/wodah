@@ -1,0 +1,28 @@
+{
+  "id": "gpu-cloud-providers",
+  "name": "Best GPU Cloud Providers for 2026",
+  "logo": "/logos/gpu-cloud.png",
+  "primaryColor": "#3B82F6",
+  "headline": "Top GPU Cloud Providers for AI Development in 2026",
+  "subheadline": "Discover the fastest and most cost-effective GPU cloud solutions for your AI projects",
+  "heroImage": "/images/gpu-cloud-hero.jpg",
+  "emailPlaceholder": "Enter your email for the latest GPU cloud rankings",
+  "buttonText": "Get the Complete Guide",
+  "benefits": [
+    "Compare pricing across 10+ providers",
+    "Performance benchmarks for different workloads",
+    "Expert recommendations for AI/ML use cases"
+  ],
+  "pricingTiers": [
+    {
+      "name": "Free Report",
+      "price": "$0",
+      "features": ["Basic comparison", "Top 5 providers", "Email updates"]
+    },
+    {
+      "name": "Pro Analysis",
+      "price": "$49",
+      "features": ["Detailed benchmarks", "ROI calculations", "Custom recommendations"]
+    }
+  ]
+}
