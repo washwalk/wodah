@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
-import { wodahConfig } from '../../wodah.config';
 
 interface AnalyticsTrackerProps {
   nicheId: string;
+  gaId: string;
 }
 
-const AnalyticsTracker: React.FC<AnalyticsTrackerProps> = ({ nicheId }) => {
+const AnalyticsTracker: React.FC<AnalyticsTrackerProps> = ({ nicheId, gaId }) => {
   useEffect(() => {
     // Initialize analytics if not already done
-    if (wodahConfig.analytics.googleAnalyticsId && typeof window !== 'undefined') {
+    if (gaId && typeof window !== 'undefined') {
       // Assume gtag is loaded, or load it here
       // For simplicity, just log
       console.log(`Analytics initialized for niche: ${nicheId}`);
 
       // Track page view
       if (window.gtag) {
-        window.gtag('config', wodahConfig.analytics.googleAnalyticsId, {
+        window.gtag('config', gaId, {
           custom_map: { dimension1: nicheId },
         });
       }

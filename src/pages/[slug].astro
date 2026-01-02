@@ -2,9 +2,11 @@
 import '../styles/global.css';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { wodahConfig } from '../../wodah.config';
 import Hero from '../components/Hero.tsx';
 import BenefitGrid from '../components/BenefitGrid.tsx';
 import ConversionSection from '../components/ConversionSection.tsx';
+import SolarCalculator from '../components/SolarCalculator.tsx';
 import AnalyticsTracker from '../components/AnalyticsTracker.tsx';
 import type { WodahNiche } from '../types.ts';
 
@@ -29,16 +31,7 @@ const handleCtaClick = () => {
   console.log('CTA clicked for', niche.id);
 };
 
-const handleFormSubmit = async (email: string, nicheId: string) => {
-  // Submit to API
-  console.log('Submitting', email, nicheId);
-  // Call the API route
-  await fetch('/api/validate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, nicheId }),
-  });
-};
+const gaId = wodahConfig.analytics.googleAnalyticsId;
 ---
 
 <html lang="en">
@@ -49,7 +42,7 @@ const handleFormSubmit = async (email: string, nicheId: string) => {
     <title>{niche.name}</title>
   </head>
   <body>
-    <AnalyticsTracker nicheId={niche.id} client:load />
+    {gaId && <AnalyticsTracker nicheId={niche.id} gaId={gaId} client:load />}
     <Hero
       headline={niche.headline}
       subheadline={niche.subheadline}
@@ -60,12 +53,14 @@ const handleFormSubmit = async (email: string, nicheId: string) => {
       client:load
     />
     <BenefitGrid benefits={niche.benefits} primaryColor={niche.primaryColor} client:load />
+    {niche.id === 'solar-roi-calculator' && (
+      <SolarCalculator primaryColor={niche.primaryColor} client:load />
+    )}
     <ConversionSection
       emailPlaceholder={niche.emailPlaceholder}
       buttonText={niche.buttonText}
       primaryColor={niche.primaryColor}
       nicheId={niche.id}
-      onSubmit={handleFormSubmit}
       client:load
     />
   </body>

@@ -1,43 +1,15 @@
-# Astro Starter Kit: Minimal
+# The Identity: A "Smoke Test" Factory
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Wodah is a multi-tenant landing page framework built on the Astro framework, integrated with Supabase for data, and hosted on Vercel.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Its primary purpose is to solve the "Founder's Trap": spending months building a product that no one wants. Instead, Wodah allows you to launch 5–10 different product ideas (niches) in minutes to see which one people actually sign up for.
 
-## 🚀 Project Structure
+## How the Architecture Works
 
-Inside of your Astro project, you'll see the following folders and files:
+The project uses a Data-Driven Design pattern. You don't build five websites; you build one engine that reads from a "Niche Configuration."
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+- **The Config (The Brain)**: A JSON file or Supabase table where you list your 5 niche ideas, their headlines, and their unique benefits.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- **The Engine (Astro)**: A set of reusable UI components (Hero, CTA, Features) that dynamically change their look and text based on which URL is visited.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **The Vault (Supabase)**: A centralized database that captures leads (emails) and tags them by the niche they came from.

@@ -5,7 +5,6 @@ interface ConversionSectionProps {
   buttonText: string;
   primaryColor: string;
   nicheId: string;
-  onSubmit: (email: string, nicheId:string) => void;
 }
 
 const ConversionSection: React.FC<ConversionSectionProps> = ({
@@ -13,13 +12,29 @@ const ConversionSection: React.FC<ConversionSectionProps> = ({
   buttonText,
   primaryColor,
   nicheId,
-  onSubmit,
 }) => {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(email, nicheId);
+    setStatus('loading');
+    try {
+      const response = await fetch('/api/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, nicheId }),
+      });
+      if (response.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -31,6 +46,12 @@ const ConversionSection: React.FC<ConversionSectionProps> = ({
     >
       <div className="max-w-xl mx-auto">
         <h2 className="text-3xl font-bold">Ready to Get Started?</h2>
+        {status === 'success' && (
+          <p className="mt-4 text-green-200">Thank you! We'll be in touch soon.</p>
+        )}
+        {status === 'error' && (
+          <p className="mt-4 text-red-200">Something went wrong. Please try again.</p>
+        )}
         <form onSubmit={handleSubmit} className="mt-5">
           <input
             type="email"
@@ -38,16 +59,18 @@ const ConversionSection: React.FC<ConversionSectionProps> = ({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="p-3 text-lg rounded-md w-full md:w-auto md:min-w-[300px] mr-0 md:mr-2 mb-2 md:mb-0 text-black"
+            disabled={status === 'loading'}
+            className="p-3 text-lg rounded-md w-full md:w-auto md:min-w-[300px] mr-0 md:mr-2 mb-2 md:mb-0 text-black disabled:opacity-50"
           />
           <button
             type="submit"
-            className="bg-white border-none p-3 text-lg rounded-md cursor-pointer"
+            disabled={status === 'loading'}
+            className="bg-white border-none p-3 text-lg rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               color: primaryColor,
             }}
           >
-            {buttonText}
+            {status === 'loading' ? 'Submitting...' : buttonText}
           </button>
         </form>
       </div>
